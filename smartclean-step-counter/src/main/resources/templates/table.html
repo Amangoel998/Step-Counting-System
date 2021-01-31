@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Step Counter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+    <body>
+        <h2>This is the status of each step counter</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Step Counter Identifier</th>
+                    <th>Current Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="stepWatcherItem: ${stepWatcherList}">
+                    <td th:text="${stepWatcherItem.serviceIdentifier}">12345</td>
+                    <td th:text="${stepWatcherItem.stepCount}">0</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
