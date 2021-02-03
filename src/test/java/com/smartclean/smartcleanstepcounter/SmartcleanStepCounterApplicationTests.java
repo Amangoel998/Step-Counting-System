@@ -1,7 +1,7 @@
 package com.smartclean.smartcleanstepcounter;
 
 import com.smartclean.smartcleanstepcounter.dto.StepCountItem;
-import com.smartclean.smartcleanstepcounter.services.SchedulerList;
+import com.smartclean.smartcleanstepcounter.services.ScheduledList;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SmartcleanStepCounterApplicationTests {
 
-    @Autowired
-	private SchedulerList scheduler;
+	@Autowired
+	private ScheduledList scheduler;
 	
 	@Test
 	void contextLoads() {

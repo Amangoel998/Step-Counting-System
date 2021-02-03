@@ -1,7 +1,15 @@
-# Step-Counting-System
+# Step Counting System
+The Application implements a REST based API server using Java 8 and Spring Boot. This Application implements scheduled executor to implement a task of creating, checking out, pausing and stopping the counters.
 
-Implement a REST based API server using Java 8
-and Spring Boot with following functions:
+---
+## Architecture
+I have implemented layered architecture and MVC Pattern which serves below mentioned functions using REST API call.
+
+![Architecture](images/Architecture.jpg)
+
+---
+
+Following functions have been implemented:
 1. `_create?start=<startval:integer>, step=<steptime:integer>`
     Result in creation of a new go routine in the program that starts counting every step time seconds. The response should return a unique identifier for that routine.
 
@@ -20,18 +28,22 @@ and Spring Boot with following functions:
 6. `_pause?id=<identifier:string>`
     Pause a given service if it exists, else return error. If it exists, and is a valid target, change the modifiedAt time to reflect this call’s response.
 
-• 7) Use dependency injection patterns to
-implement the above and discuss about the
-same.
+![Counter Table](/images/renderCounters.jpg)
 
-• 8) Document the above program in an
-appropriate README file.
+---
+## Scheduler
+The scheduler Executors are objects which are stored in Map objects with corresponding keys identifying each step counter's unique identifier.
 
-• 9) Discuss the use of interfaces in the above
-program if relevant.
+Now each scheduler executor are services which schedule jobs at fixed rate and produces ScheduledFuture object.
 
-• 10) You can use any database backend if
-required by the above program for persistence
-and state retrieval on abrupt kills. Discuss about
-persistency in the above context and update the
-README.
+![Scheduler](images/SchedulerExecutor.jpg)
+
+---
+## Persistence
+I have used H2 Database to make persistence of all the stopped Schedulers which holds data for 
+![Database Persistence](images/insertedAfterDelete.jpg)
+
+## Reference
+1. https://www.journaldev.com/2340/java-scheduler-scheduledexecutorservice-scheduledthreadpoolexecutor-example
+2. http://tutorials.jenkov.com/java-util-concurrent/scheduledexecutorservice.html
+3. https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle

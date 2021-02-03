@@ -15,12 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 import com.smartclean.smartcleanstepcounter.dto.*;
-import com.smartclean.smartcleanstepcounter.services.SchedulerList;
+import com.smartclean.smartcleanstepcounter.services.ScheduledList;
+
 @RestController
 public class StepController {
 
     @Autowired
-    private SchedulerList scheduler;
+    private ScheduledList scheduler;
 
     @PostMapping(path="/create", produces = "application/json", params = {"start", "step"})
     public ResponseEntity<String> createStepper(

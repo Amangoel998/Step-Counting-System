@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SchedulerList {
+public class SchedulerListImpl implements ScheduledList{
     private static Map<String, List<Object>> map = new ConcurrentHashMap<String, List<Object>>();
 
     @Autowired
