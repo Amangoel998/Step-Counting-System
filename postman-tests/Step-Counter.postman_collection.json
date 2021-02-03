@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "bc1c2051-216a-417a-8d06-245feeeff5a2",
+		"name": "Step-Counter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Stepper",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/create?start=5&step=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"create"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "5"
+						},
+						{
+							"key": "step",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check-single-Counter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/check?id=1jyd8q19r5pv8",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"check"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1jyd8q19r5pv8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check-All-Counters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/check",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stop-Count",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/clear/t81up42jwz1d",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clear",
+						"t81up42jwz1d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pause Counter",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/pause/?id=1hv5hre8olkqb",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pause",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1hv5hre8olkqb"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

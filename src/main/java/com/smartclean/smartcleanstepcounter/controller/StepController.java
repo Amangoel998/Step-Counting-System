@@ -42,7 +42,6 @@ public class StepController {
         StepCountItem result = null;
         try{
             result = scheduler.checkCounter(id);
-            System.out.println(result);
         }catch(Exception e){}
         return new ResponseEntity<StepCountItem>(result, HttpStatus.OK);
     }
@@ -53,7 +52,7 @@ public class StepController {
         try{
             items = scheduler.checkAllCounter();
         }catch(Exception e){
-            items = List.of(new StepCountItem("Cannot Load Items",0L));
+            items = null;
         }
         return new ResponseEntity<List<StepCountItem>>(items, HttpStatus.OK);
     }
@@ -65,7 +64,7 @@ public class StepController {
         try{
             items = scheduler.checkAllCounter();
         }catch(Exception e){
-            items = List.of(new StepCountItem("Cannot Load Items",0L));
+            items = null;
         }
 		model.addObject("stepWatcherList", items);
         return model;

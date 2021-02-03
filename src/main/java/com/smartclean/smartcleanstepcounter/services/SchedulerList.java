@@ -11,6 +11,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import com.smartclean.smartcleanstepcounter.dto.StepCountItem;
+import com.smartclean.smartcleanstepcounter.dao.CounterDataStore;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class SchedulerList {
 
     public String createCounter(long initialCount, int step) throws Exception {
         String id = guid.generateUniqueId();
-        StepCountItem item = new StepCountItem(id, initialCount);
+        StepCountItem item = new StepCountItem(id, initialCount, step);
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
         final Runnable worker = ()->{
             item.incrementCounter();

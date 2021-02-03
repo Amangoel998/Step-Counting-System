@@ -1,4 +1,4 @@
-package com.smartclean.smartcleanstepcounter.services;
+package com.smartclean.smartcleanstepcounter.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,14 +20,15 @@ public class CounterDataStore {
             Statement stmt = conn.createStatement(); 
             String sql =  "CREATE TABLE CounterRegistration " + 
                "(uid VARCHAR(255) not NULL, " +
-               " counter BIGINT, " +
+               " counterValue BIGINT, " +
+               " stepValue INT, " +
                " createdTime TimeStamp, " + 
                " modifiedTime TimeStamp, " + 
-               " stopped Boolean DEFAULT True" +
+               " stopped Boolean DEFAULT True, " +
                " PRIMARY KEY ( uid ))";
             stmt.executeUpdate(sql);
         }catch(Exception e){
-            System.err.println(e.getMessage());
+            // System.err.println(e.getMessage());
         }
     }
     public boolean persistCounter(StepCountItem item) throws Exception{
@@ -35,9 +36,10 @@ public class CounterDataStore {
         String sql =  "INSERT INTO CounterRegistration " +
            "VALUES ('"+
            item.getServiceIdentifier()+"', "+
-           item.getStepCount()+", '"+
+           item.getStepCount()+", "+
+           item.getStepTime()+", '"+
            item.getCreatedDate()+"', '"+
-           item.getModifiedDate()+"')";
+           item.getModifiedDate()+"', True)";
         stmt.executeUpdate(sql);
         return true;
     }
@@ -47,12 +49,7 @@ public class CounterDataStore {
         ResultSet rs = stmt.executeQuery(sql);
         List<StepCountItem> list = new ArrayList<>();
         while(rs.next()){
-            list.add(new StepCountItem(
-                rs.getString(1),
-                rs.getLong(2),
-                rs.getTimestamp(3),
-                rs.getTimestamp(4),
-                true));
+            list.add(new StepCountItem(rs.getString(1),rs.getLong(2),rs.getInt(3),rs.getTimestamp(4),rs.getTimestamp(5),true));
         }
         return list;
     }

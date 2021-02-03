@@ -10,21 +10,42 @@ public class StepCountItem {
     private Timestamp createdDate;
     private Timestamp modifiedDate;
     private Boolean isStopped;
+    private int stepTime;
 
-    public StepCountItem(String serviceIdentifier, Long stepCount) {
+    public StepCountItem(String serviceIdentifier, Long stepCount, int step) {
         this.serviceIdentifier = serviceIdentifier;
         this.stepCount = new AtomicLong(stepCount);
         this.createdDate = Timestamp.valueOf(LocalDateTime.now());
         this.modifiedDate = Timestamp.valueOf(LocalDateTime.now());
+        this.stepTime = step;
         this.isStopped = false;
     }    
 
-    public String getServiceIdentifier() {
+    public StepCountItem(Timestamp createdDate, String serviceIdentifier,  Timestamp modifiedDate,
+            Boolean isStopped) {
+        
+    }
+
+    public StepCountItem(String serviceIdentifier, Long stepCount, int step, Timestamp createdDate, Timestamp modifiedDate, boolean isStopped) {
+        this.serviceIdentifier = serviceIdentifier;
+        this.stepCount = new AtomicLong(stepCount);
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.stepTime = step;
+        this.isStopped = isStopped;
+    }
+
+
+	public String getServiceIdentifier() {
         return serviceIdentifier;
     }
 
     public Long getStepCount() {
         return stepCount.get();
+    }
+
+    public Integer getStepTime() {
+        return this.stepTime;
     }
 
     public Long incrementCounter() {
@@ -57,13 +78,5 @@ public class StepCountItem {
         this.isStopped = isStopped;
     }
 
-    public StepCountItem(String serviceIdentifier, Long stepCount, Timestamp createdDate, Timestamp modifiedDate,
-            Boolean isStopped) {
-        this.serviceIdentifier = serviceIdentifier;
-        this.stepCount = new AtomicLong(stepCount);
-        this.createdDate = createdDate;
-        this.modifiedDate = modifiedDate;
-        this.isStopped = isStopped;
-    }
 
 }
