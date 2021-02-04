@@ -1,7 +1,16 @@
 # Step Counting System
 The Application implements a REST based API server using Java 8 and Spring Boot. This Application implements scheduled executor to implement a task of creating, checking out, pausing and stopping the counters.
 
----
+## Starting the Application
+The pre-requisite for the application includes following dependencies and the environment variables set properly on your system:
+1. Java JDK
+2. Maven
+
+To start the application, run the following command
+```
+$ mvn spring-boot:run
+```
+
 ## Architecture
 I have implemented layered architecture and MVC Pattern which serves below mentioned functions using REST API call.
 
